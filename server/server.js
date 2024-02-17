@@ -2,6 +2,7 @@ import express from "express"
 import dotenv from "dotenv"
 import authRoutes from "./routes/auth.routes.js"
 import router from "./routes/auth.routes.js";
+import messageRouter from "./routes/message.routes.js";
 import connectToMongoDB from "./db/connectToMongoDB.js";
 dotenv.config()
 
@@ -14,6 +15,7 @@ app.get("/", (req, res) => {
 })
 
 app.use("/api/auth", router)
+app.use("/api/message", messageRouter)
 
 app.listen(8000, () => {
     connectToMongoDB()
